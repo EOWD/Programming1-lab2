@@ -1,213 +1,347 @@
-# Scrabble Game in C# - Guided Lab
-
-![Game Time GIF](https://media.giphy.com/media/1C8bHHJturSx2/giphy.gif?cid=ecf05e47nb9p5xzvk3d7kglo60qvqfachsbwe4hhg8v9fxog&ep=v1_gifs_search&rid=giphy.gif&ct=g)
-
-Welcome to the **Scrabble Showdown**! 🎉 Get ready to dive into the wild world of C#, where we’ll build a Scrabble-like game, and you’ll get to decide the victor between two brave players. Will you code the next Scrabble champion or... tie? 🤔
-
-Let’s grab our virtual coding mugs, and may the best wordsmith win! 💻☕ (Bonus points for style. Just kidding, maybe.)
+# Scrabble Game in C# - Step-by-Step Guide for Beginners
 
 ---
 
-## Step 1: Set Up Your Coding Arena
+## Overview
 
-### What to do:
-1. **Grab your gear**:
-   - **Visual Studio Code**: Your trusty code editor. Download it [here](https://code.visualstudio.com/). 🛠️
-   - **.NET SDK**: Without this, you’ll be coding in the dark! Download it [here](https://dotnet.microsoft.com/download). 🌟
+We’re going to build a simple **Scrabble-like game** using **C#**. In this game, two players will enter words, and the program will calculate their scores based on Scrabble letter values. The player with the highest score wins!
 
-2. Time to throw some commands into your terminal like a coding wizard:
+---
+
+## Step 1: Set Up Your Coding Environment
+
+### What You Need:
+
+1. **Visual Studio Code**: This is the program where you’ll write your code.
+   - You can download it [here](https://code.visualstudio.com/).
+
+2. **.NET SDK**: This is a tool that allows you to run and build C# programs.
+   - You can download it [here](https://dotnet.microsoft.com/download).
+
+### Steps:
+
+1. **Install Visual Studio Code** by downloading and running the installer from the link above. Follow the instructions on the screen to finish the installation.
+
+2. **Install the .NET SDK** by downloading it from the provided link and running the installer. Again, just follow the instructions.
+
+3. After both tools are installed, **open Visual Studio Code**.
+
+4. Now, you need to **open the terminal** inside Visual Studio Code:
+   - Click on `Terminal` in the top menu.
+   - Select `New Terminal` from the dropdown.
+
+---
+
+## Step 2: Create a New C# Project
+
+We need to create a new C# project where we’ll write our Scrabble game code. A project is just a folder with some setup files that help us organize and run our code.
+
+### Steps:
+
+1. **In the terminal**, type this command and press **Enter**:
+
    ```bash
    dotnet new console -n ScrabbleGame
+   ```
+
+   - This creates a new folder called `ScrabbleGame` with some basic setup files.
+
+2. Now, type this command to move into the new folder:
+
+   ```bash
    cd ScrabbleGame
    ```
 
-3. Use this mystical command to open your newly created magic portal (aka project) in **Visual Studio Code**:
+   - This tells your computer to switch to the `ScrabbleGame` folder.
+
+3. Finally, type this command to **open the project** in Visual Studio Code:
+
    ```bash
    code .
    ```
 
-Now your coding arena is ready for battle... or, you know, for learning and fun.
+   - This opens the current project folder in Visual Studio Code, so you can start writing code.
 
 ---
 
-## Step 2: Summon the Scores Array (Our Trusty Sidekick)
+## Step 3: Create the `ScrabbleGame` Class
 
-### What to do:
-Let’s set up a **score array** for each letter in the alphabet, Scrabble-style. It’s like creating a scoreboard... without the scoreboard. 🏆
+In C#, a **class** is like a container that holds your game’s code. Everything we write for the Scrabble game will go inside this class.
 
-**Hint**: 
-- Use `int[] arrayName = { values };` to create an array. You got this!
-- Imagine each letter like a contestant. "A" gets 1 point for being awesome, "Z" gets 10 points because, well, it's rare! 💯
+### What to Do:
 
-1. In `Program.cs`, create an array to store these mighty scores.
+1. In the Explorer panel (on the left side of the screen), find and click on `Program.cs` to open the file.
 
-Try creating the array before peeking at the answer. (No cheating... unless you must!)
+2. **Delete everything** in the file. We want to start from scratch.
+
+3. Now, type this code:
 
 <details>
-  <summary>Click here if your code-sorcery fails you</summary>
+  <summary>Click here to reveal the code for the class</summary>
 
 ```csharp
-static int[] scores = {
-    1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10
+using System;
+
+class ScrabbleGame
+{
+    // We will add code here soon.
+}
+```
+
+</details>
+
+**Explanation**:
+
+- `using System;` is a line that allows us to use basic C# commands like `Console.WriteLine` to print messages to the screen.
+- `class ScrabbleGame` defines a **class** called `ScrabbleGame`. All the code we write for the game will go inside this class (inside the curly braces `{ }`).
+
+---
+
+## Step 4: Store Letter Scores in an Array
+
+In Scrabble, each letter has a point value. For example, 'A' is worth 1 point, 'B' is worth 3 points, and 'Z' is worth 10 points. We’ll store these values in something called an **array**.
+
+An **array** is like a list that holds multiple values. In this case, the array will hold the scores for each letter from A to Z.
+
+### What to Do:
+
+1. Inside the `ScrabbleGame` class (between the curly braces `{ }`), add the following code:
+
+<details>
+  <summary>Click here to reveal the code for the letter scores</summary>
+
+```csharp
+private int[] letterScores = {
+    1, 3, 3, 2, 1, 4, 2, 4, 1, 8,
+    5, 1, 3, 1, 1, 3, 10, 1, 1, 1,
+    1, 4, 4, 8, 4, 10
 };
 ```
 
-### Fun Fact:
-- The letter "Z" is like the rare Pokémon of letters—worth 10 points! 💥
 </details>
+
+**Explanation**:
+
+- `private int[] letterScores` creates an array called `letterScores` that holds integers (whole numbers).
+- The numbers in the array represent the points for each letter:
+   - The first number, `1`, is for 'A'.
+   - The second number, `3`, is for 'B'.
+   - The last number, `10`, is for 'Z'.
+
+We now have an array that stores the points for all 26 letters of the alphabet.
 
 ---
 
-## Step 3: Let’s Get Looping (The Fun Kind, Not the Infinite Kind)
+## Step 5: Write a Method to Compute the Score of a Word
 
-### What to do:
-Now we need a method that checks each letter of a word and gives them a score. Like a Scrabble referee—but cooler. 😎
+Now, we’ll create a **method** that calculates the score of a word. A **method** is a block of code that performs a task. In this case, the method will go through each letter of a word, find its score in the `letterScores` array, and add up the total score.
 
-**Hint**:
-- Declare a method using `static` (because it’s always there for you) and a `for` loop (because you're in control).
-- Convert the word to uppercase so even "cAt" looks like "CAT". You know, to be fair. 😺
+### What to Do:
 
-1. Write a method called `ComputeScore` that takes a word and returns the score. It's like counting points in a very sophisticated word-battle.
-
-2. Use a **for** loop to check each letter and add up the score like a true Scrabble master.
-
-Give it a whirl before you check the answer... go on, take a risk! 😜
+1. Inside the `ScrabbleGame` class, add the following method:
 
 <details>
-  <summary>Click here if you're looping out of control...</summary>
+  <summary>Click here to reveal the code for the ComputeScore method</summary>
 
 ```csharp
-static int ComputeScore(string word)
+public int ComputeScore(string word)
 {
-    int score = 0;
-    word = word.ToUpper();  // Let's make everything capitalized, no bias here!
+    int totalScore = 0;  // Start the score at 0
+    word = word.ToUpper();  // Convert the word to uppercase
 
-    for (int i = 0; i < word.Length; i++)  // Let’s go through every letter
+    // Loop through each letter in the word
+    for (int i = 0; i < word.Length; i++)
     {
-        char letter = word[i];
+        char letter = word[i];  // Get the current letter
+
+        // Check if the character is a letter
         if (char.IsLetter(letter))
         {
-            score += scores[letter - 'A'];  // Add the letter's score from the array
+            // Find the index of the letter (A=0, B=1, ..., Z=25)
+            int index = letter - 'A';
+
+            // Add the letter's score to totalScore
+            totalScore += letterScores[index];
         }
     }
-    return score;  // Victory or defeat lies in the numbers...
+
+    return totalScore;  // Return the total score of the word
 }
 ```
 
-### Pro Tip:
-- Keep track of those scores, like counting snacks—don’t let any letters slip away unnoticed! 🍕
 </details>
+
+**Explanation**:
+
+- `public int ComputeScore(string word)` creates a method called `ComputeScore` that takes in a word (string) and returns an integer (the total score).
+- `int totalScore = 0;` initializes the score to 0.
+- `word = word.ToUpper();` converts the word to all uppercase letters, so that 'cat' becomes 'CAT'. This ensures we don’t have to worry about whether the player used lowercase or uppercase letters.
+- The **for loop** goes through each letter in the word. It starts at the first letter (`i = 0`) and stops when it reaches the end (`i < word.Length`).
+- `char.IsLetter(letter)` checks if the character is actually a letter (just in case the player types something else by mistake).
+- `int index = letter - 'A';` calculates the position of the letter in the alphabet (e.g., 'A' is 0, 'B' is 1, 'Z' is 25).
+- `totalScore += letterScores[index];` adds the score of the letter (based on the `letterScores` array) to the total score.
+- `return totalScore;` returns the total score for the word.
 
 ---
 
-## Step 4: Ask Your Brave Players for Words
+## Step 6: Write a Method to Start the Game
 
-### What to do:
-Now it's time to get our **two players** to input their words. Will Player 1 bring out "WIZARD" while Player 2 battles with "ZEBRA"? 🦓 Let’s find out!
+Now we need a method that actually **starts** the game. This method will ask the players for their words, calculate their scores, and decide who wins.
 
-**Hint**:
-- Use `Console.WriteLine()` to ask for input (because we need to be polite).
-- Store each word in a **string** variable. It’s a bit like keeping a secret until it’s time to reveal the scores! 🤫
+### What to Do:
 
-1. Use `Console.WriteLine` to prompt each player for their word.
-2. Use `Console.ReadLine` to collect their words.
-
-Give it a shot, and then check below if the words won’t appear like magic. ✨
+1. Inside the `ScrabbleGame` class, add the following method:
 
 <details>
-  <summary>Stuck? Here's how to collect those words like a pro</summary>
+  <summary>Click here to reveal the code for starting the game</summary>
 
 ```csharp
-Console.Write("Player 1, enter your word: ");
-string player1Word = Console.ReadLine();  // Whatever they say, we’ll take note!
+public void StartGame()
+{
+    // Ask Player 1 for their word
+    Console.Write("Player 1, enter your word: ");
+    string player1Word = Console.ReadLine();
 
-Console.Write("Player 2, enter your word: ");
-string player2Word = Console.ReadLine();  // Player 2 is ready for battle!
+    // Ask Player 2 for their word
+    Console.Write("Player 2, enter your word: ");
+    string player2Word = Console.ReadLine();
+
+    // Compute the scores for both words
+    int player1Score = ComputeScore(player1Word);
+    int player2Score = ComputeScore(player2Word);
+
+    // Display the scores
+    Console.WriteLine($"Player 1 Score: {player1Score}");
+    Console.WriteLine($"Player 2 Score: {player2Score}");
+
+    // Determine the winner
+    if (player1Score > player2Score)
+    {
+        Console.WriteLine("Player 1 wins! 🏆");
+    }
+    else if (player2Score > player1Score)
+    {
+        Console.WriteLine("Player 2 wins! 🏆");
+    }
+    else
+    {
+        Console.WriteLine("It's a tie! 🤝");
+    }
+}
 ```
 
-### Fun Fact:
-- Player 1 vs Player 2. This is what legends are made of! 🏅
 </details>
+
+**Explanation**:
+
+- `Console.Write("Player 1, enter your word: ");` prints a message asking Player 1 to enter their word.
+- `string player1Word = Console.ReadLine();` captures the word that Player 1 types in.
+- We do the same for Player 2.
+- We call
+
+ the `ComputeScore` method to calculate the score for both words.
+- `if` and `else` statements compare the scores and decide who wins.
 
 ---
 
-## Step 5: The Moment of Truth—Calculate Scores and Determine the Winner
+## Step 7: Add the Main Method to Run the Game
 
-### What to do:
-Let’s do some math! (Don’t panic, it’s the fun kind.) We’re about to find out who wins this epic word clash.
+The **Main** method is the starting point of your program. It’s the first thing that runs when you start the program. Here, it will start the Scrabble game.
 
-**Hint**:
-- Use **if...else** to compare scores and print the winner.
-- You’re the game judge now. No pressure... 😏
+### What to Do:
 
-1. Use the `ComputeScore` method to get the scores for each player’s word.
-2. Use some **if...else** magic to print who wins or if it’s a tie. Let the code decide!
-
-Got your winner in mind? Now let’s see if the code agrees.
+1. Outside the `ScrabbleGame` class (below the closing brace `}`), add the following code:
 
 <details>
-  <summary>Click if you need a little push toward glory</summary>
+  <summary>Click here to reveal the Main method code</summary>
 
 ```csharp
-int player1Score = ComputeScore(player1Word);
-int player2Score = ComputeScore(player2Word);
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create a new instance of the game
+        ScrabbleGame game = new ScrabbleGame();
 
-if (player1Score > player2Score)
-{
-    Console.WriteLine("Player 1 is victorious! 🏆");
-}
-else if (player2Score > player1Score)
-{
-    Console.WriteLine("Player 2 takes the crown! 👑");
-}
-else
-{
-    Console.WriteLine("It's a tie! How anticlimactic... 😅");
+        // Start the game
+        game.StartGame();
+    }
 }
 ```
 
-### Fun Fact:
-- If it’s a tie, you might have just witnessed the rarest of Scrabble moments...! 🤷‍♂️
 </details>
 
----
+**Explanation**:
 
-## Step 6: Time to Run Your Masterpiece!
-
-### What to do:
-It’s time to put all your hard work to the test and run your game. Let’s find out who will reign supreme!
-
-1. Open your terminal and run:
-   ```bash
-   dotnet run
-   ```
-
-2. Sit back, relax, and see who emerges victorious. Is it Player 1, Player 2, or... is it you, the coder?! 💻
+- `class Program` defines a new class called `Program`.
+- The **Main** method (`static void Main(string[] args)`) is where the program starts.
+- We create a new instance of `ScrabbleGame` and call the `StartGame()` method to begin the game.
 
 ---
 
-## Bonus Challenge: Level Up Your Game
+## Step 8: Run Your Game!
 
-Now that your game is working, what’s next? Let’s add some extra flair!
-- **Input Validation**: Make sure players enter real words—no gibberish here! 🧐
-- **Bonus Points**: Why not add special points for longer words or specific letters? Double the fun! 🎉
+Let’s see your game in action.
 
----
+### What to Do:
 
-### Explanation of the Structure:
-- **Interactive learning**: Follow each step, and reveal solutions only when necessary—kind of like leveling up in a video game.
-- **Fun and humor**: Code with a smile, because learning doesn’t have to be boring!
+1. **Save** your work:
+   - Click `File` > `Save All`, or press `Ctrl + K, S` on Windows (`Cmd + Option + S` on Mac).
 
----
+2. **Run the program**:
+   - In the terminal, type:
 
-### Publishing the Glory:
-Once you’re done, push your code to GitHub and show the world (or, at least, your friends):
-```bash
-git add .
-git commit -m "Victory is mine!"
-git push origin main
+     ```bash
+     dotnet run
+     ```
+
+3. **Play the game**:
+   - Enter words for Player 1 and Player 2 when prompted.
+   - See the scores and find out who wins!
+
+**Example**:
+
+```
+Player 1, enter your word: hello
+Player 2, enter your word: world
+Player 1 Score: 8
+Player 2 Score: 9
+Player 2 wins! 🏆
 ```
 
 ---
 
-And there you have it! You’ve not only coded a game but also created a fun battle between two players. Ready to take over the coding world? Of course, you are! 😎💻
+## Step 9: Congratulations!
+
+You’ve just built a simple Scrabble-like game in C#! 🎉
+
+---
+
+## Optional Enhancements
+
+Want to take it further? Try these:
+
+1. **Input Validation**:
+   - Ensure players only enter words containing letters.
+
+2. **Play Again Option**:
+   - After the game ends, ask the players if they want to play again.
+
+3. **More Players**:
+   - Modify the game to allow more than two players.
+
+---
+
+## Final Thoughts
+
+Great job! You've learned:
+
+- **Classes** for organizing code.
+- **Methods** for performing tasks.
+- **Arrays** for storing data.
+- **Loops** for repeating actions.
+- **User input** and **output** in the console.
+
+Keep practicing, and you’ll keep improving. Happy coding! 💻
+
+---

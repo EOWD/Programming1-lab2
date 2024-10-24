@@ -308,7 +308,7 @@ Let’s see your game in action.
 ### What to Do:
 
 1. **Save** your work:
-   - Click `File` > `Save All`, or press `Ctrl + K, S` on Windows (`Cmd + Option + S` on Mac).
+   - Click `File` > `Save All`, or press `Ctrl + S on Windows (`Cmd + S` on Mac).
 
 2. **Run the program**:
    - In the terminal, type:

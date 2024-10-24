@@ -1,10 +1,29 @@
 # Scrabble Game in C# - Step-by-Step Guide for Beginners
 
 ---
-
+![Game Time GIF](https://media.giphy.com/media/0DYipdNqJ5n4GYATKL/giphy.gif?cid=ecf05e47g5m0w1g9bhemyff663qq9ymyslz5k2ca2plt1j8y&ep=v1_gifs_search&rid=giphy.gif&ct=g)
 ## Overview
 
-We’re going to build a simple **Scrabble-like game** using **C#**. In this game, two players will enter words, and the program will calculate their scores based on Scrabble letter values. The player with the highest score wins!
+We’re going to create a Scrabble-like game using the C# programming language. In this game, two players will type in words, and the program will calculate the scores for each word based on the Scrabble letter values.
+
+Each letter in Scrabble has a specific point value. For example:
+
+A is worth 1 point
+B is worth 3 points
+Z is worth 10 points
+The program will:
+
+Ask each player to type a word.
+Calculate the score for each word by adding up the points for each letter.
+Compare the scores to determine which player has the higher score.
+Announce the winner, or declare a tie if both scores are equal.
+By the end of this tutorial, you’ll have a basic understanding of how to:
+
+Use arrays to store data (letter scores).
+Write methods to perform tasks (calculate word scores).
+Take input from users (the players).
+Use conditionals (if-else statements) to decide the winner.
+This is a great project for practicing basic programming concepts like loops, arrays, methods, and user input/output. Plus, it’s fun because you’re building a simple game that you can play with your friends!
 
 ---
 
@@ -131,6 +150,7 @@ private int[] letterScores = {
 We now have an array that stores the points for all 26 letters of the alphabet.
 
 ---
+![Game Time GIF](https://media.giphy.com/media/oVIMiFQKiFtm3vO8Bj/giphy.gif?cid=790b761145o3vjkf98yz8a2dq89cagmu0txbe98kz5rl3tdy&ep=v1_gifs_search&rid=giphy.gif&ct=g)
 
 ## Step 5: Write a Method to Compute the Score of a Word
 
@@ -183,7 +203,7 @@ public int ComputeScore(string word)
 - `return totalScore;` returns the total score for the word.
 
 ---
-
+![Game Time GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXlwNWZicDZ4eWQ0Z3k0eTljOXRwNXBvZ2UybjE4ZTVsd2M0cGp3aCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/aNqEFrYVnsS52/giphy.gif)
 ## Step 6: Write a Method to Start the Game
 
 Now we need a method that actually **starts** the game. This method will ask the players for their words, calculate their scores, and decide who wins.
@@ -243,6 +263,8 @@ public void StartGame()
 - `if` and `else` statements compare the scores and decide who wins.
 
 ---
+
+
 
 ## Step 7: Add the Main Method to Run the Game
 
@@ -310,11 +332,11 @@ Player 2 wins! 🏆
 ```
 
 ---
-
 ## Step 9: Congratulations!
 
 You’ve just built a simple Scrabble-like game in C#! 🎉
 
+![Game Time GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3RsaTIwaGI2bWJjczhnZ2Eyc3NrNmo0cTJqaXExdzQ4Y2o1ZWNqbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/j0vs5H7Kcz3Pm9LRDa/giphy.gif)
 ---
 
 ## Optional Enhancements
